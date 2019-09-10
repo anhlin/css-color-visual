@@ -1,0 +1,2 @@
+export const FILTER_COLORS = "FILTER_COLORS";
+export const CLEAR_FILTER = "CLEAR_FILTER";
