@@ -1,3 +1,5 @@
 # CSS Color Visualizer
 
-Try it out here! [Work in progress] anhlin.github.io/css-color-visual
+Created with React
+
+Try it out here! [Work in progress] https://anhlin.github.io/css-color-visual
