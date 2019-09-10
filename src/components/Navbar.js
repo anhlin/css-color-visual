@@ -3,7 +3,14 @@ import ColorContext from "../context/colorContext";
 
 const Navbar = () => {
   const colorContext = useContext(ColorContext);
-  const { filterColors, clearFilter } = colorContext;
+  const {
+    filterColors,
+    clearFilter,
+    filtered,
+    sort_alpha_filtered,
+    sort_alpha,
+    sort_rgb
+  } = colorContext;
   const filter = useRef("");
 
   const onChange = event => {
@@ -14,9 +21,17 @@ const Navbar = () => {
     }
   };
 
+  const sortAlpha = () => {
+    sort_alpha();
+  };
+
+  const sortRGB = event => {
+    sort_rgb();
+  };
+
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light pl-5">
+    <div className="sticky-top">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark pl-5">
         <a className="navbar-brand" href="/">
           <i className="fas fa-fill-drip pr-2"></i>
           CSS Color Visualizer
@@ -33,40 +48,45 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse " id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <a className="nav-link" href="/">
-                Home <span className="sr-only">(current)</span>
-              </a>
-            </li>
-
-            <li className="nav-item dropdown">
+            <li className="nav-item">
               <a
-                className="nav-link dropdown-toggle"
-                href="/"
+                className="nav-link"
                 id="navbarDropdown"
                 role="button"
-                data-toggle="dropdown"
+                data-toggle="collapse"
+                data-target=".multi-collapse"
                 aria-haspopup="true"
                 aria-expanded="false"
+                aria-controls="sortOpt1 sortOpt2"
               >
-                Sort By
+                Sort
               </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="/">
-                  Action
+            </li>
+            <div className="collapse multi-collapse" id="sortOpt1">
+              <li className="nav-item">
+                <a className="nav-link" href="#" onClick={sortAlpha}>
+                  Alphabetically
                 </a>
-                <a className="dropdown-item" href="/">
-                  Another action
+              </li>
+            </div>
+            <div className="collapse multi-collapse" id="sortOpt2">
+              <li className="nav-item">
+                <a className="nav-link" href="#" onClick={sortRGB}>
+                  RGB
                 </a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="/">
+              </li>
+            </div>
+            <div className="collapse multi-collapse" id="sortOpt3">
+              <li className="nav-item">
+                <a className="nav-link" href="#">
                   Something else here
                 </a>
-              </div>
-            </li>
+              </li>
+            </div>
           </ul>
+
           <form className="form-inline my-2 my-lg-0">
             <input
               className="form-control mr-sm-2"
