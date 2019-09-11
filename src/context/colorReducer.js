@@ -1,4 +1,10 @@
-import { FILTER_COLORS, CLEAR_FILTER, SORT_ALPHA, SORT_RGB } from "./types";
+import {
+  FILTER_COLORS,
+  CLEAR_FILTER,
+  SORT_ALPHA,
+  SORT_RGB,
+  SORT_RANDOM
+} from "./types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -76,6 +82,34 @@ export default (state, action) => {
         filtered: state.filtered,
         sortedByAlpha: false,
         sortedByRGB: !state.sortedByRGB
+      };
+    case SORT_RANDOM:
+      const shuffle = array => {
+        var currentIndex = array.length,
+          temporaryValue,
+          randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+
+          // And swap it with the current element.
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+        return array;
+      };
+      shuffle(state.colors);
+      if (state.filtered !== null) shuffle(state.filtered);
+      return {
+        ...state,
+        filtered: state.filtered,
+        colors: state.colors,
+        sortedByAlpha: false,
+        sortedByRGB: false
       };
     default:
       return {

@@ -1,7 +1,13 @@
 import React, { useReducer } from "react";
 import ColorContext from "./colorContext";
 import ColorReducer from "./colorReducer";
-import { FILTER_COLORS, CLEAR_FILTER, SORT_ALPHA, SORT_RGB } from "./types";
+import {
+  FILTER_COLORS,
+  CLEAR_FILTER,
+  SORT_ALPHA,
+  SORT_RGB,
+  SORT_RANDOM
+} from "./types";
 
 const ColorState = props => {
   const hex_json = require("../data/colors-hex.json");
@@ -63,6 +69,10 @@ const ColorState = props => {
     dispatch({ type: SORT_RGB, payload: "rgb" });
   };
 
+  const sort_random = () => {
+    dispatch({ type: SORT_RANDOM });
+  };
+
   return (
     <ColorContext.Provider
       value={{
@@ -73,7 +83,8 @@ const ColorState = props => {
         filterColors,
         clearFilter,
         sort_alpha,
-        sort_rgb
+        sort_rgb,
+        sort_random
       }}
     >
       {props.children}

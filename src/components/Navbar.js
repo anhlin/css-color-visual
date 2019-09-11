@@ -7,7 +7,7 @@ const Navbar = () => {
     filterColors,
     clearFilter,
     filtered,
-    sort_alpha_filtered,
+    sort_random,
     sort_alpha,
     sort_rgb
   } = colorContext;
@@ -25,8 +25,12 @@ const Navbar = () => {
     sort_alpha();
   };
 
-  const sortRGB = event => {
+  const sortRGB = () => {
     sort_rgb();
+  };
+
+  const sortRandom = () => {
+    sort_random();
   };
 
   return (
@@ -80,8 +84,8 @@ const Navbar = () => {
             </div>
             <div className="collapse multi-collapse" id="sortOpt3">
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Something else here
+                <a className="nav-link" href="#" onClick={sortRandom}>
+                  Random
                 </a>
               </li>
             </div>
