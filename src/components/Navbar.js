@@ -6,7 +6,6 @@ const Navbar = () => {
   const {
     filterColors,
     clearFilter,
-    filtered,
     sort_random,
     sort_alpha,
     sort_rgb
@@ -14,10 +13,12 @@ const Navbar = () => {
   const filter = useRef("");
 
   const onChange = event => {
-    if (filter.current.value !== "") {
-      filterColors(event.target.value);
-    } else {
-      clearFilter();
+    if (!event.target.value.includes("\\")) {
+      if (filter.current.value !== "") {
+        filterColors(event.target.value);
+      } else {
+        clearFilter();
+      }
     }
   };
 
@@ -35,7 +36,7 @@ const Navbar = () => {
 
   return (
     <div className="sticky-top">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark pl-5">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark pl-5 py-1">
         <a className="navbar-brand" href="/">
           <i className="fas fa-fill-drip pr-2"></i>
           CSS Color Visualizer
@@ -52,11 +53,12 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse " id="navbarSupportedContent">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <a
                 className="nav-link"
+                href="#options"
                 id="navbarDropdown"
                 role="button"
                 data-toggle="collapse"
@@ -68,26 +70,37 @@ const Navbar = () => {
                 Sort
               </a>
             </li>
-            <div className="collapse multi-collapse" id="sortOpt1">
-              <li className="nav-item">
-                <a className="nav-link" href="#" onClick={sortAlpha}>
-                  Alphabetically
-                </a>
-              </li>
-            </div>
-            <div className="collapse multi-collapse" id="sortOpt2">
-              <li className="nav-item">
-                <a className="nav-link" href="#" onClick={sortRGB}>
-                  RGB
-                </a>
-              </li>
-            </div>
-            <div className="collapse multi-collapse" id="sortOpt3">
-              <li className="nav-item">
-                <a className="nav-link" href="#" onClick={sortRandom}>
-                  Random
-                </a>
-              </li>
+            <div className="collapse multi-collapse opt ml-2 px-2">
+              <div
+                className="collapse multi-collapse d-inline-block"
+                id="sortOpt1"
+              >
+                <li className="nav-item">
+                  <a className="nav-link" href="#" onClick={sortAlpha}>
+                    Alphabetically
+                  </a>
+                </li>
+              </div>
+              <div
+                className="collapse multi-collapse d-inline-block"
+                id="sortOpt2"
+              >
+                <li className="nav-item">
+                  <a className="nav-link" href="#" onClick={sortRGB}>
+                    RGB
+                  </a>
+                </li>
+              </div>
+              <div
+                className="collapse multi-collapse d-inline-block"
+                id="sortOpt3"
+              >
+                <li className="nav-item">
+                  <a className="nav-link" href="#" onClick={sortRandom}>
+                    Random
+                  </a>
+                </li>
+              </div>
             </div>
           </ul>
 
@@ -96,7 +109,7 @@ const Navbar = () => {
               className="form-control mr-sm-2"
               type="search"
               ref={filter}
-              placeholder="Filter! e.g. 'light', 'blue'"
+              placeholder="Filter Colors"
               aria-label="Search"
               onChange={onChange}
             />

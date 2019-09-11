@@ -11,7 +11,7 @@ const ColorItem = props => {
       }}
     >
       <div className="container info pt-4">
-        <h3> {color} </h3>
+        <h4> {color} </h4>
         <h3> {hex} </h3>
         <h4>
           ({rgb[0]},{rgb[1]},{rgb[2]})

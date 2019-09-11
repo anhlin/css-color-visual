@@ -49,7 +49,8 @@ const ColorState = props => {
   const initialState = {
     colors: color_array,
     filtered: null,
-    sortedByAlpha: true
+    sortedByAlpha: true,
+    sortedByRGB: false
   };
   const [state, dispatch] = useReducer(ColorReducer, initialState);
 
