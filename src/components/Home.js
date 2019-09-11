@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <Fragment>
-      <div className="row">
+      <div className="row w-100 m-0">
         {filtered !== null
           ? filtered.map(color => (
               <ColorItem key={color.color} color={color}></ColorItem>

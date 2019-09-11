@@ -92,7 +92,7 @@ const Navbar = () => {
               className="form-control mr-sm-2"
               type="search"
               ref={filter}
-              placeholder="Filter Colors!"
+              placeholder="Filter! e.g. 'light', 'blue'"
               aria-label="Search"
               onChange={onChange}
             />

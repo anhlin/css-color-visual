@@ -66,6 +66,9 @@ export default (state, action) => {
       );
       if (state.sortedByRGB) {
         state.colors.reverse();
+        if (state.filtered !== null) {
+          state.filtered.reverse();
+        }
       }
       return {
         ...state,

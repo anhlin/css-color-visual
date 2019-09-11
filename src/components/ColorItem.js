@@ -4,7 +4,7 @@ const ColorItem = props => {
   const { color, hex, rgb } = props.color;
   return (
     <div
-      className="color col-xs-12 col-sm-6 col-md-4 col-lg-1 text-center"
+      className="color-item color col-xs-12 col-sm-6 col-md-4 col-xl-2 text-center"
       key={color.color}
       style={{
         backgroundColor: color

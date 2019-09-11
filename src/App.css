@@ -3,7 +3,6 @@
 }
 
 .color {
-  min-width: 200px;
   min-height: 200px;
 }
 
@@ -11,14 +10,10 @@
   opacity: 0.8;
 }
 
-h1:hover {
-  display: none;
-  background-color: black;
+.info:hover {
+  color: #777;
 }
 
-.info:hover {
-  color: white;
-}
 input:focus::placeholder {
   color: transparent;
 }
